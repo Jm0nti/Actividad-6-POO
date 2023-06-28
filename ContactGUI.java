@@ -13,7 +13,7 @@ public class ContactGUI extends JFrame {
 
         // Configurar la interfaz gráfica de usuario
         setTitle("Agenda de Contactos");
-        setSize(400, 400);
+        setSize(350, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -121,3 +121,4 @@ public class ContactGUI extends JFrame {
         });
     }
 }
+

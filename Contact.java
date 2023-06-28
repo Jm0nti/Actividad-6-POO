@@ -20,3 +20,4 @@ public class Contact {
         return "Name: " + name + ", Phone Number: " + phoneNumber;
     }
 }
+
