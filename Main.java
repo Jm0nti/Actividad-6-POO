@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        ContactGUI gui = new ContactGUI();
+        AgendaGUI gui = new AgendaGUI();
         gui.setVisible(true);
     }
 }
+

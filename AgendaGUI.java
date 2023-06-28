@@ -3,13 +3,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ContactGUI extends JFrame {
-    private ContactDAO contactDAO;
+public class AgendaGUI extends JFrame {
+    private ContactFile contactFile;
     private JTextField nameField;
     private JTextField phoneNumberField;
 
-    public ContactGUI() {
-        contactDAO = new ContactDAO("contacts.txt");
+    public AgendaGUI() {
+        contactFile = new ContactFile("contacts.txt");
 
         // Configurar la interfaz gráfica de usuario
         setTitle("Agenda de Contactos");
@@ -54,8 +54,8 @@ public class ContactGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
                 String phoneNumber = phoneNumberField.getText();
-                Contact contact = new Contact(name, phoneNumber);
-                contactDAO.createContact(contact);
+                Contacto contact = new Contacto(name, phoneNumber);
+                contactFile.createContact(contact);
                 clearFields();
                 JOptionPane.showMessageDialog(null, "Contacto creado con éxito");
             }
@@ -65,7 +65,7 @@ public class ContactGUI extends JFrame {
         readButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
-                Contact contact = contactDAO.readContact(name);
+                Contacto contact = contactFile.readContact(name);
                 if (contact != null) {
                     phoneNumberField.setText(contact.getPhoneNumber());
                 } else {
@@ -80,7 +80,7 @@ public class ContactGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
                 String phoneNumber = phoneNumberField.getText();
-                contactDAO.updateContact(name, phoneNumber);
+                contactFile.updateContact(name, phoneNumber);
                 clearFields();
                 JOptionPane.showMessageDialog(null, "Contacto actualizado con éxito");
             }
@@ -90,7 +90,7 @@ public class ContactGUI extends JFrame {
         deleteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
-                contactDAO.deleteContact(name);
+                contactFile.deleteContact(name);
                 clearFields();
                 JOptionPane.showMessageDialog(null, "Contacto eliminado con éxito");
             }
@@ -115,7 +115,7 @@ public class ContactGUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                ContactGUI gui = new ContactGUI();
+                AgendaGUI gui = new AgendaGUI();
                 gui.setVisible(true);
             }
         });

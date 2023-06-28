@@ -1,13 +1,13 @@
 import java.io.*;
 
-public class ContactDAO {
+public class ContactFile {
     private String filename;
 
-    public ContactDAO(String filename) {
+    public ContactFile(String filename) {
         this.filename = filename;
     }
 
-    public void createContact(Contact contact) {
+    public void createContact(Contacto contact) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
             writer.write(contact.getName() + "," + contact.getPhoneNumber());
             writer.newLine();
@@ -16,13 +16,13 @@ public class ContactDAO {
         }
     }
 
-    public Contact readContact(String name) {
+    public Contacto readContact(String name) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data[0].equals(name)) {
-                    return new Contact(data[0], data[1]);
+                    return new Contacto(data[0], data[1]);
                 }
             }
         } catch (IOException e) {
